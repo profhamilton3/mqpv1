@@ -1,9 +1,5 @@
 
 #Libraries are added by extensions the build
-DFRobotMaqueenPlus.i2c_init()
-basic.show_icon(IconNames.ANGRY)
-DFRobotMaqueenPlus.servo_run(Servos.S1, 0)
-
 
 def doDriveForward(speed:number, duration: number):
     DFRobotMaqueenPlus.servo_run(Servos.S1, 15)
@@ -38,6 +34,8 @@ def doDriveSpinLeft(speed:number, duration: number):
 
 
 def on_button_pressed_a():
+    DFRobotMaqueenPlus.i2c_init()
+    DFRobotMaqueenPlus.servo_run(Servos.S1, 0)
     doDriveForward(75,1000)
     doDriveSpinLeft(50,500)
     doDriveBackward(75,1000)
@@ -45,3 +43,5 @@ def on_button_pressed_a():
     DFRobotMaqueenPlus.motot_stop(Motors.ALL)
 
 input.on_button_pressed(Button.A, on_button_pressed_a)
+
+basic.show_icon(IconNames.ANGRY)
